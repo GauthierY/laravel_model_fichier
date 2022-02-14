@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ReceipeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Affiche la liste des recettes
+Route::get('/', [ReceipeController::class, 'index'])->name('riri');
+ 
+// Affiche le formulaire
+Route::get('/form', [ReceipeController::class, 'toto']);
+Route::post('/form', [ReceipeController::class, 'titi']);
+ 
+// Enregistre les données du formulaire dans la base de données
+//Route::post('store-receipe', [ReceipeController::class, 'store'])->name('store-receipe');
